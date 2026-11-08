@@ -28,7 +28,7 @@ header a { color: var(--fg2); text-decoration: none; font-size: 14px; direction:
 .hero p { color: var(--fg2); font-size: 18px; margin: 0; max-width: 34em; }
 .mark { justify-self: center; width: min(260px, 60vw); aspect-ratio: 1; border-radius: 36px; background: var(--panel); border: 1px solid var(--line); display: grid; place-items: center; }
 .mark img { width: 62%; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 10px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 10px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .card h2 { font-family: var(--fb); font-weight: normal; font-size: 24px; margin: 0; display: flex; align-items: center; gap: 10px; }
 .card h2 svg { width: 26px; height: 26px; fill: var(--fg); flex: none; }
@@ -48,7 +48,7 @@ section.how h3 { font-family: var(--fb); font-weight: normal; font-size: 22px; m
 .short { display: inline-block; direction: ltr; font-family: var(--mono); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 1px 8px; font-size: 13px; color: var(--fg); word-break: break-all; }
 footer { margin-top: 34px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; color: var(--fg3); font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; }
 footer .tel { direction: ltr; unicode-bidi: isolate; color: var(--fg2); }
-@media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-top: 30px; } .mark { display: none; } .cards, .steps { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-top: 30px; } .mark { display: none; } .steps { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -66,32 +66,7 @@ footer .tel { direction: ltr; unicode-bidi: isolate; color: var(--fg2); }
     <div class="mark"><img src="assets/logo_mark.png" alt=""></div>
   </div>
 
-  <div class="cards">
-    <div class="card" id="android">
-      <h2><svg viewBox="0 0 24 24"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24A11.4 11.4 0 0012 7.9c-1.6 0-3.1.33-4.47.91L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z"/></svg>أندرويد</h2>
-      <div class="sub">موبايل · تابلت · TV Box · شاشات أندرويد · الإصدار 2.5</div>
-      <a class="btn" href="files/PROFESSOR_TV_v2.5_universal.apk" download>تحميل لكل الأجهزة <small>APK · 27 MB</small></a>
-      <a class="btn alt" href="files/PROFESSOR_TV_v2.5_arm64.apk" download>نسخة أصغر للأجهزة 64 بت <small>14 MB</small></a>
-      <a class="btn alt" href="files/PROFESSOR_TV_v2.5_armv7.apk" download>نسخة الأجهزة 32 بت <small>14 MB</small></a>
-      <a class="btn alt" href="files/PROFESSOR_TV_v2.4_Android4.apk" download>للأجهزة القديمة (أندرويد 4 و5) <small>3 MB</small></a>
-      <p class="note">إذا لم تكن متأكداً اختر <b>تحميل لكل الأجهزة</b>. يحتاج أندرويد 6 فما فوق.</p>
-    </div>
-
-    <div class="card" id="windows">
-      <h2><svg viewBox="0 0 24 24"><path d="M3 5.1l7.5-1v7.3H3V5.1zm0 13.8l7.5 1v-7.2H3v6.2zm8.4 1.1L21 21.3v-8.6h-9.6V20zm0-15.9v7.3H21V2.7l-9.6 1.4z"/></svg>ويندوز</h2>
-      <div class="sub">ويندوز 10 و11 · الإصدار 2.5</div>
-      <a class="btn" href="files/PROFESSOR_TV_Setup_2.5.0.exe" download>تحميل ملف التثبيت <small>EXE · 31 MB</small></a>
-      <a class="btn alt" href="files/PROFESSOR_TV_Portable_2.5.0.zip" download>نسخة محمولة بدون تثبيت <small>ZIP · 41 MB</small></a>
-      <p class="note">عند أول تشغيل قد تظهر رسالة <b>Windows protected your PC</b>: اضغط More info ثم Run anyway.</p>
-    </div>
-
-    <div class="card" id="lg">
-      <h2><svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/></svg>تلفزيونات LG</h2>
-      <div class="sub">webOS · الإصدار 2.4.1</div>
-      <a class="btn" href="files/PROFESSOR_TV_LG_webOS_2.4.1.ipk" download>تحميل ملف IPK <small>1.3 MB</small></a>
-      <p class="note">يُثبَّت على تلفزيون LG بوضع المطوّر (Developer Mode) أو من متجر LG بعد النشر.</p>
-    </div>
-  </div>
+  <div class="cards" id="cards"><p class="note">جاري التحميل…</p></div>
 
   <section class="how">
     <h3>طريقة التشغيل</h3>
@@ -110,6 +85,37 @@ footer .tel { direction: ltr; unicode-bidi: isolate; color: var(--fg2); }
 </div>
 <script>
   try { var h = location.host + location.pathname.replace(/index\.html$/, ''); if (location.host) document.getElementById('here').textContent = h.replace(/\/$/, ''); } catch (e) {}
+</script>
+<script>
+(function () {
+  var ICON = {
+    android: 'M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24A11.4 11.4 0 0012 7.9c-1.6 0-3.1.33-4.47.91L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5zm10 0a1.25 1.25 0 110-2.5 1.25 1.25 0 010 2.5z',
+    windows: 'M3 5.1l7.5-1v7.3H3V5.1zm0 13.8l7.5 1v-7.2H3v6.2zm8.4 1.1L21 21.3v-8.6h-9.6V20zm0-15.9v7.3H21V2.7l-9.6 1.4z',
+    lg: 'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z',
+    other: 'M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z'
+  };
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function mb(n) { if (!n) return ''; return n < 1048576 ? Math.max(1, Math.round(n / 1024)) + ' KB' : (n / 1048576).toFixed(n < 10485760 ? 1 : 0) + ' MB'; }
+  function ext(f) { var m = /\.([a-z0-9]+)$/i.exec(f); return m ? m[1].toUpperCase() : ''; }
+  var box = document.getElementById('cards');
+  fetch('files.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); }).then(function (d) {
+    var html = '';
+    (d.groups || []).forEach(function (g) {
+      var list = (d.files || []).filter(function (f) { return (f.group || 'other') === g.id; });
+      if (!list.length) return;
+      html += '<div class="card"><h2><svg viewBox="0 0 24 24"><path d="' + (ICON[g.id] || ICON.other) + '"/></svg>' + esc(g.title) + '</h2>';
+      if (g.sub) html += '<div class="sub">' + esc(g.sub) + '</div>';
+      list.forEach(function (f) {
+        var meta = [ext(f.file), mb(f.size)].filter(Boolean).join(' · ');
+        html += '<a class="btn' + (f.primary ? '' : ' alt') + '" href="files/' + encodeURIComponent(f.file) + '" download>' + esc(f.title || f.file) + ' <small>' + esc(meta) + '</small></a>';
+        if (f.note) html += '<p class="note">' + esc(f.note) + '</p>';
+      });
+      if (g.note) html += '<p class="note">' + esc(g.note) + '</p>';
+      html += '</div>';
+    });
+    box.innerHTML = html || '<p class="note">لا توجد ملفات حالياً.</p>';
+  }).catch(function () { box.innerHTML = '<p class="note">تعذّر تحميل قائمة الملفات. حدّث الصفحة.</p>'; });
+})();
 </script>
 </body>
 </html>

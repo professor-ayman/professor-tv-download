@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>PROFESSOR TV — إدارة الملفات</title>
+<link rel="icon" href="assets/icon.png">
+<style>
+@font-face { font-family: 'beIN Normal'; src: url(assets/bein_normal.ttf) format('truetype'); font-display: swap; }
+@font-face { font-family: 'beIN Black'; src: url(assets/bein_black.ttf) format('truetype'); font-display: swap; }
+:root {
+  --bg: #09090A; --panel: #141416; --raise: #1D1D20; --line: #2A2A2E;
+  --fg: #F5F5F6; --fg2: #B6B6BC; --fg3: #7C7C84; --ink: #09090A;
+  --f: 'beIN Normal', 'Segoe UI', Tahoma, Arial, sans-serif;
+  --fb: 'beIN Black', 'beIN Normal', 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); color: var(--fg); }
+body { margin: 0; font-family: var(--f); font-size: 16px; line-height: 1.7; background: var(--bg); }
+.wrap { max-width: 900px; margin: 0 auto; padding: 28px 16px 60px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+header img { height: 40px; }
+header nav { display: flex; gap: 10px; flex-wrap: wrap; }
+h1 { font-family: var(--fb); font-weight: normal; font-size: 28px; margin: 0 0 4px; }
+h2 { font-family: var(--fb); font-weight: normal; font-size: 20px; margin: 0 0 14px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 22px; padding: 22px; margin-bottom: 18px; }
+label { display: block; color: var(--fg2); font-size: 14px; margin: 12px 0 6px; }
+input[type=text], input[type=password], select, textarea { width: 100%; background: var(--raise); color: var(--fg); border: 1px solid var(--line); border-radius: 12px; padding: 11px 14px; font: inherit; font-size: 15px; }
+input:focus, select:focus { outline: 2px solid var(--fg); outline-offset: 1px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+button, .lnk { font-family: var(--fb); font-size: 15px; border: 0; border-radius: 12px; padding: 11px 18px; cursor: pointer; background: var(--fg); color: var(--ink); text-decoration: none; display: inline-block; }
+button.alt, .lnk.alt { background: var(--raise); color: var(--fg); border: 1px solid var(--line); font-family: var(--f); }
+button.sm { padding: 6px 12px; font-size: 13px; font-family: var(--f); }
+button:disabled { opacity: .45; cursor: default; }
+.drop { border: 2px dashed var(--line); border-radius: 18px; padding: 26px; text-align: center; color: var(--fg2); cursor: pointer; }
+.drop.on { border-color: var(--fg); color: var(--fg); }
+.drop b { font-family: var(--fb); font-weight: normal; color: var(--fg); display: block; font-size: 18px; }
+.chk { display: flex; align-items: center; gap: 8px; color: var(--fg2); margin-top: 12px; }
+.bar { height: 8px; background: var(--raise); border-radius: 8px; overflow: hidden; margin-top: 14px; display: none; }
+.bar i { display: block; height: 100%; width: 0; background: var(--fg); transition: width .2s; }
+.msg { margin-top: 12px; color: var(--fg2); font-size: 14px; min-height: 1em; }
+.msg.err { color: var(--fg); font-family: var(--fb); }
+.item { background: var(--raise); border: 1px solid var(--line); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
+.item .top { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.item .fn { direction: ltr; font-size: 13px; color: var(--fg3); word-break: break-all; flex: 1 1 200px; text-align: left; }
+.item .grid { display: grid; grid-template-columns: 2fr 1fr auto; gap: 10px; margin-top: 10px; align-items: center; }
+.item .acts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.small { font-size: 13px; color: var(--fg3); }
+.hide { display: none !important; }
+ol { padding-inline-start: 20px; color: var(--fg2); margin: 8px 0; }
+code { direction: ltr; unicode-bidi: isolate; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 0 6px; font-size: 13px; }
+@media (max-width: 640px) { .row, .item .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="assets/logo_full.png" alt="PROFESSOR">
+    <nav>
+      <a class="lnk alt" href="./">صفحة التحميل</a>
+      <button class="alt hide" id="logout">تسجيل خروج</button>
+    </nav>
+  </header>
+
+  <!-- Login -->
+  <section class="panel" id="login">
+    <h1>إدارة ملفات التحميل</h1>
+    <p class="small">هذه الصفحة لك فقط. ادخل بمفتاح GitHub الخاص بك (يُحفظ في هذا المتصفح فقط).</p>
+    <label for="tok">مفتاح الدخول (GitHub Token)</label>
+    <input type="password" id="tok" placeholder="github_pat_..." autocomplete="off" dir="ltr">
+    <div style="margin-top:14px"><button id="go">دخول</button></div>
+    <div class="msg" id="lmsg"></div>
+    <details style="margin-top:16px">
+      <summary class="small" style="cursor:pointer">كيف أحصل على المفتاح؟ (مرة واحدة فقط)</summary>
+      <ol>
+        <li>افتح <a class="small" style="color:var(--fg)" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a></li>
+        <li>Token name: <code>professor-upload</code> — Expiration: اختر No expiration أو سنة.</li>
+        <li>Repository access: <b>Only select repositories</b> واختر <code>professor-tv-download</code>.</li>
+        <li>Permissions ← Repository permissions ← <b>Contents</b>: اختر <b>Read and write</b>.</li>
+        <li>اضغط Generate token وانسخ المفتاح والصقه هنا.</li>
+      </ol>
+    </details>
+  </section>
+
+  <!-- App -->
+  <div id="app" class="hide">
+    <section class="panel">
+      <h2>رفع ملف جديد</h2>
+      <div class="drop" id="drop"><b>اسحب الملف هنا أو اضغط للاختيار</b><span class="small">APK · EXE · ZIP · IPK · PDF … حتى 95 MB</span></div>
+      <input type="file" id="file" class="hide">
+      <div id="form" class="hide">
+        <p class="small" id="fsel" style="direction:ltr;text-align:left;margin:12px 0 0"></p>
+        <div class="row">
+          <div><label for="ftitle">اسم الزر الظاهر للعملاء</label><input type="text" id="ftitle"></div>
+          <div><label for="fgroup">القسم</label><select id="fgroup"></select></div>
+        </div>
+        <label for="fnote">ملاحظة تحت الزر (اختياري)</label>
+        <input type="text" id="fnote">
+        <label class="chk"><input type="checkbox" id="fprim"> زر رئيسي (أبيض) في أعلى القسم</label>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap"><button id="up">رفع الملف</button><button class="alt" id="cancel">إلغاء</button></div>
+      </div>
+      <div class="bar" id="bar"><i></i></div>
+      <div class="msg" id="umsg"></div>
+    </section>
+
+    <section class="panel">
+      <h2>الملفات الموجودة</h2>
+      <div id="list"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button id="save" disabled>حفظ التعديلات</button>
+        <span class="small">التغييرات تظهر في صفحة التحميل خلال دقيقة تقريباً.</span>
+      </div>
+      <div class="msg" id="smsg"></div>
+    </section>
+  </div>
+</div>
+
+<script>
+(function () {
+  var OWNER = 'professor-ayman', REPO = 'professor-tv-download', BR = 'main', API = 'https://api.github.com/repos/' + OWNER + '/' + REPO;
+  var RAW = 'https://github.com/' + OWNER + '/' + REPO + '/raw/' + BR + '/files/';
+  var KEY = 'ptv_dl_token';
+  var token = '', man = null, dirty = false, chosen = null;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function store(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {} }
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function mb(n) { return n < 1048576 ? Math.max(1, Math.round(n / 1024)) + ' KB' : (n / 1048576).toFixed(1) + ' MB'; }
+  function msg(el, t, err) { $(el).textContent = t || ''; $(el).className = 'msg' + (err ? ' err' : ''); }
+
+  function gh(method, path, body) {
+    return fetch(API + path, {
+      method: method,
+      headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28', 'Content-Type': 'application/json' },
+      body: body ? JSON.stringify(body) : undefined, cache: 'no-store'
+    }).then(function (r) {
+      return r.text().then(function (t) {
+        var j = null; try { j = t ? JSON.parse(t) : null; } catch (e) {}
+        if (!r.ok) { var e = new Error((j && j.message) || ('HTTP ' + r.status)); e.status = r.status; throw e; }
+        return j;
+      });
+    });
+  }
+  function b64utf8(s) { return btoa(unescape(encodeURIComponent(s))); }
+  function utf8b64(b) { return decodeURIComponent(escape(atob(b.replace(/\n/g, '')))); }
+
+  function uploadBlob(file, onp) {
+    return new Promise(function (res, rej) {
+      var fr = new FileReader();
+      fr.onerror = function () { rej(new Error('تعذّر قراءة الملف')); };
+      fr.onload = function () {
+        var b64 = String(fr.result).split(',')[1] || '';
+        var x = new XMLHttpRequest();
+        x.open('POST', API + '/git/blobs');
+        x.setRequestHeader('Authorization', 'Bearer ' + token);
+        x.setRequestHeader('Accept', 'application/vnd.github+json');
+        x.setRequestHeader('Content-Type', 'application/json');
+        x.upload.onprogress = function (e) { if (e.lengthComputable) onp(e.loaded / e.total); };
+        x.onload = function () {
+          var j = null; try { j = JSON.parse(x.responseText); } catch (e) {}
+          if (x.status >= 200 && x.status < 300 && j && j.sha) res(j.sha); else rej(new Error((j && j.message) || ('HTTP ' + x.status)));
+        };
+        x.onerror = function () { rej(new Error('انقطع الاتصال أثناء الرفع')); };
+        x.send(JSON.stringify({ content: b64, encoding: 'base64' }));
+      };
+      fr.readAsDataURL(file);
+    });
+  }
+
+  // Create one commit: entries = [{path, sha}|{path, content}|{path, del:true}]
+  function commit(entries, message) {
+    var head;
+    return gh('GET', '/git/ref/heads/' + BR).then(function (r) {
+      head = r.object.sha; return gh('GET', '/git/commits/' + head);
+    }).then(function (c) {
+      var tree = entries.map(function (e) {
+        var t = { path: e.path, mode: '100644', type: 'blob' };
+        if (e.del) t.sha = null; else if (e.sha) t.sha = e.sha; else t.content = e.content;
+        return t;
+      });
+      return gh('POST', '/git/trees', { base_tree: c.tree.sha, tree: tree });
+    }).then(function (t) {
+      return gh('POST', '/git/commits', { message: message, tree: t.sha, parents: [head] });
+    }).then(function (nc) {
+      return gh('PATCH', '/git/refs/heads/' + BR, { sha: nc.sha });
+    });
+  }
+  function manifestEntry() { return { path: 'files.json', content: JSON.stringify(man, null, 2) + '\n' }; }
+
+  function loadManifest() {
+    return gh('GET', '/contents/files.json?ref=' + BR + '&t=' + Date.now()).then(function (r) {
+      man = JSON.parse(utf8b64(r.content));
+      man.groups = man.groups || []; man.files = man.files || [];
+      var sel = $('fgroup'); sel.innerHTML = '';
+      man.groups.forEach(function (g) { var o = document.createElement('option'); o.value = g.id; o.textContent = g.title; sel.appendChild(o); });
+      dirty = false; render();
+    });
+  }
+
+  function groupTitle(id) { var g = man.groups.filter(function (x) { return x.id === id; })[0]; return g ? g.title : id; }
+
+  function render() {
+    var box = $('list'); box.innerHTML = '';
+    if (!man.files.length) { box.innerHTML = '<p class="small">لا توجد ملفات.</p>'; }
+    man.files.forEach(function (f, i) {
+      var d = document.createElement('div'); d.className = 'item';
+      var opts = man.groups.map(function (g) { return '<option value="' + esc(g.id) + '"' + (g.id === f.group ? ' selected' : '') + '>' + esc(g.title) + '</option>'; }).join('');
+      d.innerHTML =
+        '<div class="top"><span class="fn">' + esc(f.file) + (f.size ? ' · ' + mb(f.size) : '') + '</span></div>' +
+        '<div class="grid"><input type="text" data-k="title" value="' + esc(f.title || '') + '" placeholder="اسم الزر">' +
+        '<select data-k="group">' + opts + '</select>' +
+        '<label class="chk" style="margin:0"><input type="checkbox" data-k="primary"' + (f.primary ? ' checked' : '') + '> رئيسي</label></div>' +
+        '<input type="text" data-k="note" value="' + esc(f.note || '') + '" placeholder="ملاحظة (اختياري)" style="margin-top:10px">' +
+        '<div class="acts"><button class="alt sm" data-a="up">↑ أعلى</button><button class="alt sm" data-a="down">↓ أسفل</button>' +
+        '<button class="alt sm" data-a="copy">نسخ رابط التحميل</button><a class="lnk alt" style="padding:6px 12px;font-size:13px" href="' + RAW + encodeURIComponent(f.file) + '">تحميل</a>' +
+        '<button class="alt sm" data-a="del">حذف</button></div>';
+      d.querySelectorAll('[data-k]').forEach(function (el) {
+        el.addEventListener(el.type === 'checkbox' || el.tagName === 'SELECT' ? 'change' : 'input', function () {
+          var k = el.getAttribute('data-k'); f[k] = el.type === 'checkbox' ? el.checked : el.value;
+          if (k === 'note' && !el.value) delete f.note;
+          setDirty();
+        });
+      });
+      d.querySelectorAll('[data-a]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var a = b.getAttribute('data-a');
+          if (a === 'up' && i > 0) { man.files.splice(i - 1, 0, man.files.splice(i, 1)[0]); setDirty(); render(); }
+          if (a === 'down' && i < man.files.length - 1) { man.files.splice(i + 1, 0, man.files.splice(i, 1)[0]); setDirty(); render(); }
+          if (a === 'copy') { var u = RAW + encodeURIComponent(f.file); (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function () { b.textContent = 'تم النسخ ✓'; }, function () { prompt('رابط التحميل:', u); }); }
+          if (a === 'del') del(i);
+        });
+      });
+      box.appendChild(d);
+    });
+  }
+  function setDirty() { dirty = true; $('save').disabled = false; msg('smsg', 'لديك تعديلات غير محفوظة.'); }
+
+  function del(i) {
+    var f = man.files[i];
+    if (!confirm('حذف الملف نهائياً؟\n' + f.file)) return;
+    msg('smsg', 'جاري الحذف…');
+    var keep = man.files.slice(); man.files.splice(i, 1);
+    commit([{ path: 'files/' + f.file, del: true }, manifestEntry()], 'Delete ' + f.file).then(function () {
+      dirty = false; $('save').disabled = true; render(); msg('smsg', 'تم الحذف ✓');
+    }).catch(function (e) { man.files = keep; render(); msg('smsg', 'فشل الحذف: ' + e.message, true); });
+  }
+
+  $('save').addEventListener('click', function () {
+    $('save').disabled = true; msg('smsg', 'جاري الحفظ…');
+    commit([manifestEntry()], 'Update download list').then(function () { dirty = false; msg('smsg', 'تم الحفظ ✓'); })
+      .catch(function (e) { $('save').disabled = false; msg('smsg', 'فشل الحفظ: ' + e.message, true); });
+  });
+
+  function safeName(n) {
+    var m = /^(.*?)(\.[A-Za-z0-9]{1,8})?$/.exec(n), base = m[1], ex = (m[2] || '').toLowerCase();
+    base = base.replace(/\s+/g, '_').replace(/[^A-Za-z0-9._-]/g, '').replace(/_+/g, '_').replace(/^[._-]+|[._-]+$/g, '');
+    if (!base) base = 'file_' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '_' + Math.random().toString(36).slice(2, 6);
+    return base + ex;
+  }
+
+  function choose(file) {
+    if (!file) return;
+    if (file.size > 95 * 1048576) { msg('umsg', 'الملف أكبر من 95 MB ولا يمكن رفعه هنا.', true); return; }
+    chosen = file;
+    var name = safeName(file.name);
+    $('fsel').textContent = name + ' · ' + mb(file.size);
+    $('ftitle').value = file.name.replace(/\.[^.]+$/, '');
+    var ex = (name.split('.').pop() || '').toLowerCase();
+    $('fgroup').value = ex === 'apk' ? 'android' : (ex === 'exe' || ex === 'msi' || ex === 'zip') ? 'windows' : ex === 'ipk' ? 'lg' : 'other';
+    if (!$('fgroup').value && man.groups[0]) $('fgroup').value = man.groups[0].id;
+    $('fnote').value = ''; $('fprim').checked = false;
+    $('form').classList.remove('hide'); $('drop').classList.add('hide'); msg('umsg', '');
+  }
+  function resetUpload() { chosen = null; $('file').value = ''; $('form').classList.add('hide'); $('drop').classList.remove('hide'); $('bar').style.display = 'none'; $('bar').firstChild.style.width = '0'; }
+
+  $('drop').addEventListener('click', function () { $('file').click(); });
+  $('file').addEventListener('change', function () { choose(this.files[0]); });
+  ['dragenter', 'dragover'].forEach(function (ev) { $('drop').addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.add('on'); }); });
+  ['dragleave', 'drop'].forEach(function (ev) { $('drop').addEventListener(ev, function (e) { e.preventDefault(); $('drop').classList.remove('on'); }); });
+  $('drop').addEventListener('drop', function (e) { choose(e.dataTransfer.files[0]); });
+  $('cancel').addEventListener('click', function () { resetUpload(); msg('umsg', ''); });
+
+  $('up').addEventListener('click', function () {
+    if (!chosen) return;
+    if (dirty && !confirm('لديك تعديلات غير محفوظة في القائمة وستُحفظ مع الرفع. متابعة؟')) return;
+    var name = safeName(chosen.name), size = chosen.size;
+    var entry = { file: name, title: $('ftitle').value.trim() || name, group: $('fgroup').value, size: size };
+    if ($('fprim').checked) entry.primary = true;
+    if ($('fnote').value.trim()) entry.note = $('fnote').value.trim();
+    $('up').disabled = $('cancel').disabled = true;
+    $('bar').style.display = 'block'; msg('umsg', 'جاري الرفع… لا تغلق الصفحة');
+    uploadBlob(chosen, function (p) { $('bar').firstChild.style.width = Math.round(p * 100) + '%'; msg('umsg', 'جاري الرفع… ' + Math.round(p * 100) + '%'); })
+      .then(function (sha) {
+        msg('umsg', 'جاري الحفظ…');
+        var at = -1; man.files.forEach(function (f, i) { if (f.file === name) at = i; });
+        if (at >= 0) man.files[at] = entry; else {
+          // place after the last file in the same group
+          var last = -1; man.files.forEach(function (f, i) { if (f.group === entry.group) last = i; });
+          if (entry.primary) { var first = -1; man.files.forEach(function (f, i) { if (first < 0 && f.group === entry.group) first = i; }); man.files.splice(first < 0 ? man.files.length : first, 0, entry); }
+          else man.files.splice(last < 0 ? man.files.length : last + 1, 0, entry);
+        }
+        return commit([{ path: 'files/' + name, sha: sha }, manifestEntry()], 'Upload ' + name);
+      }).then(function () {
+        dirty = false; $('save').disabled = true; msg('smsg', '');
+        render(); resetUpload();
+        msg('umsg', 'تم الرفع ✓ رابط التحميل المباشر: ' + RAW + encodeURIComponent(name));
+      }).catch(function (e) {
+        loadManifest().catch(function () {});
+        msg('umsg', 'فشل الرفع: ' + e.message, true);
+      }).then(function () { $('up').disabled = $('cancel').disabled = false; });
+  });
+
+  function enter(t) {
+    token = t; msg('lmsg', 'جاري التحقق…');
+    gh('GET', '').then(function (r) {
+      if (!r.permissions || !r.permissions.push) throw new Error('المفتاح لا يملك صلاحية الكتابة على المستودع (Contents: Read and write).');
+      store(KEY, t);
+      return loadManifest();
+    }).then(function () {
+      $('login').classList.add('hide'); $('app').classList.remove('hide'); $('logout').classList.remove('hide'); msg('lmsg', '');
+    }).catch(function (e) {
+      token = ''; msg('lmsg', e.status === 401 ? 'المفتاح غير صحيح أو منتهي.' : ('تعذّر الدخول: ' + e.message), true);
+    });
+  }
+  $('go').addEventListener('click', function () { var t = $('tok').value.trim(); if (t) enter(t); });
+  $('tok').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('go').click(); });
+  $('logout').addEventListener('click', function () { store(KEY, null); location.reload(); });
+  window.addEventListener('beforeunload', function (e) { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+  var saved = load(KEY); if (saved) enter(saved);
+})();
+</script>
+</body>
+</html>
