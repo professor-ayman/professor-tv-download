@@ -52,17 +52,17 @@
       "size": 3027428
     },
     {
-      "file": "PROFESSOR_TV_Setup_2.5.0.exe",
+      "file": "PROFESSOR_TV_Setup_2.5.1.exe",
       "title": "تحميل ملف التثبيت",
       "group": "windows",
-      "size": 32709662,
+      "size": 32718018,
       "primary": true
     },
     {
-      "file": "PROFESSOR_TV_Portable_2.5.0.zip",
+      "file": "PROFESSOR_TV_Portable_2.5.1.zip",
       "title": "نسخة محمولة بدون تثبيت",
       "group": "windows",
-      "size": 43509626
+      "size": 43514467
     },
     {
       "file": "PROFESSOR_TV_LG_webOS_2.4.1.ipk",
