@@ -1,17 +1,75 @@
 {
   "groups": [
-    { "id": "android", "title": "أندرويد", "sub": "موبايل · تابلت · TV Box · شاشات أندرويد", "note": "إذا لم تكن متأكداً اختر الزر الأول. يحتاج أندرويد 6 فما فوق." },
-    { "id": "windows", "title": "ويندوز", "sub": "ويندوز 10 و11", "note": "عند أول تشغيل قد تظهر رسالة Windows protected your PC: اضغط More info ثم Run anyway." },
-    { "id": "lg", "title": "تلفزيونات LG", "sub": "webOS", "note": "يُثبَّت على تلفزيون LG بوضع المطوّر (Developer Mode) أو من متجر LG بعد النشر." },
-    { "id": "other", "title": "ملفات أخرى", "sub": "", "note": "" }
+    {
+      "id": "android",
+      "title": "أندرويد",
+      "sub": "موبايل · تابلت · TV Box · شاشات أندرويد",
+      "note": "إذا لم تكن متأكداً اختر الزر الأول. يحتاج أندرويد 6 فما فوق."
+    },
+    {
+      "id": "windows",
+      "title": "ويندوز",
+      "sub": "ويندوز 10 و11",
+      "note": "عند أول تشغيل قد تظهر رسالة Windows protected your PC: اضغط More info ثم Run anyway."
+    },
+    {
+      "id": "lg",
+      "title": "تلفزيونات LG",
+      "sub": "webOS",
+      "note": "يُثبَّت على تلفزيون LG بوضع المطوّر (Developer Mode) أو من متجر LG بعد النشر."
+    },
+    {
+      "id": "other",
+      "title": "ملفات أخرى",
+      "sub": "",
+      "note": ""
+    }
   ],
   "files": [
-    { "file": "PROFESSOR_TV_v2.5_universal.apk", "title": "تحميل لكل الأجهزة", "group": "android", "size": 28755934, "primary": true },
-    { "file": "PROFESSOR_TV_v2.5_arm64.apk", "title": "نسخة أصغر للأجهزة 64 بت", "group": "android", "size": 14951661 },
-    { "file": "PROFESSOR_TV_v2.5_armv7.apk", "title": "نسخة الأجهزة 32 بت", "group": "android", "size": 14259457 },
-    { "file": "PROFESSOR_TV_v2.4_Android4.apk", "title": "للأجهزة القديمة (أندرويد 4 و5)", "group": "android", "size": 3027428 },
-    { "file": "PROFESSOR_TV_Setup_2.5.0.exe", "title": "تحميل ملف التثبيت", "group": "windows", "size": 32709662, "primary": true },
-    { "file": "PROFESSOR_TV_Portable_2.5.0.zip", "title": "نسخة محمولة بدون تثبيت", "group": "windows", "size": 43509626 },
-    { "file": "PROFESSOR_TV_LG_webOS_2.4.1.ipk", "title": "تحميل ملف IPK", "group": "lg", "size": 1286504, "primary": true }
+    {
+      "file": "PROFESSOR_TV_v2.5.1_universal.apk",
+      "title": "تحميل لكل الأجهزة",
+      "group": "android",
+      "size": 28764126,
+      "primary": true
+    },
+    {
+      "file": "PROFESSOR_TV_v2.5.1_arm64.apk",
+      "title": "نسخة أصغر للأجهزة 64 بت",
+      "group": "android",
+      "size": 14955757
+    },
+    {
+      "file": "PROFESSOR_TV_v2.5.1_armv7.apk",
+      "title": "نسخة الأجهزة 32 بت",
+      "group": "android",
+      "size": 14267649
+    },
+    {
+      "file": "PROFESSOR_TV_v2.4_Android4.apk",
+      "title": "للأجهزة القديمة (أندرويد 4 و5)",
+      "group": "android",
+      "size": 3027428
+    },
+    {
+      "file": "PROFESSOR_TV_Setup_2.5.0.exe",
+      "title": "تحميل ملف التثبيت",
+      "group": "windows",
+      "size": 32709662,
+      "primary": true
+    },
+    {
+      "file": "PROFESSOR_TV_Portable_2.5.0.zip",
+      "title": "نسخة محمولة بدون تثبيت",
+      "group": "windows",
+      "size": 43509626
+    },
+    {
+      "file": "PROFESSOR_TV_LG_webOS_2.4.1.ipk",
+      "title": "تحميل ملف IPK",
+      "group": "lg",
+      "size": 1286504,
+      "primary": true
+    }
   ]
 }
