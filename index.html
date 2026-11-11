@@ -21,13 +21,13 @@ html { background: var(--bg); color: var(--fg); }
 body { margin: 0; font-family: var(--f); font-size: 16px; line-height: 1.7; background: radial-gradient(1200px 600px at 85% -10%, #1E1E22 0%, var(--bg) 60%); min-height: 100vh; }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 32px max(18px, env(safe-area-inset-left)) 56px max(18px, env(safe-area-inset-right)); }
 header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-header img { height: 44px; }
+header img { height: 38px; }
 header a { color: var(--fg2); text-decoration: none; font-size: 14px; direction: ltr; }
 .hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; padding: 48px 0 30px; }
 .hero h1 { font-family: var(--fb); font-weight: normal; font-size: clamp(30px, 5vw, 50px); line-height: 1.25; margin: 0 0 12px; }
 .hero p { color: var(--fg2); font-size: 18px; margin: 0; max-width: 34em; }
-.mark { justify-self: center; width: min(260px, 60vw); aspect-ratio: 1; border-radius: 36px; background: var(--panel); border: 1px solid var(--line); display: grid; place-items: center; }
-.mark img { width: 62%; }
+.mark { justify-self: center; width: min(280px, 60vw); aspect-ratio: 1; display: grid; place-items: center; }
+.mark img { width: 100%; }
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 10px; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 22px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .card h2 { font-family: var(--fb); font-weight: normal; font-size: 24px; margin: 0; display: flex; align-items: center; gap: 10px; }
@@ -54,7 +54,7 @@ footer .tel { direction: ltr; unicode-bidi: isolate; color: var(--fg2); }
 <body>
 <div class="wrap">
   <header>
-    <img src="assets/logo_full.png" alt="PROFESSOR">
+    <img src="assets/logo_full.svg" alt="PROFESSOR">
     <a href="https://www.professorae.com">www.professorae.com</a>
   </header>
 
@@ -63,7 +63,7 @@ footer .tel { direction: ltr; unicode-bidi: isolate; color: var(--fg2); }
       <h1>حمّل PROFESSOR TV</h1>
       <p>كل القنوات والأفلام والمسلسلات في تطبيق واحد، للموبايل والتلفزيون والكمبيوتر. بعد التثبيت أرسل رمز جهازك لبروفيسور لتحصل على كود التفعيل.</p>
     </div>
-    <div class="mark"><img src="assets/logo_mark.png" alt=""></div>
+    <div class="mark"><img src="assets/app_icon.png" alt=""></div>
   </div>
 
   <div class="cards" id="cards"><p class="note">جاري التحميل…</p></div>

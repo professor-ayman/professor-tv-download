@@ -46,10 +46,10 @@
       "size": 15926672
     },
     {
-      "file": "PROFESSOR_TV_v2.4_Android4.apk",
+      "file": "PROFESSOR_TV_v2.4.2_Android4.apk",
       "title": "للأجهزة القديمة (أندرويد 4 و5)",
       "group": "android",
-      "size": 3027428
+      "size": 3204606
     },
     {
       "file": "PROFESSOR_TV_Setup_2.6.0.exe",
@@ -65,10 +65,10 @@
       "size": 43701615
     },
     {
-      "file": "PROFESSOR_TV_LG_webOS_2.4.1.ipk",
+      "file": "PROFESSOR_TV_LG_webOS_2.4.2.ipk",
       "title": "تحميل ملف IPK",
       "group": "lg",
-      "size": 1286504,
+      "size": 412066,
       "primary": true
     }
   ]
