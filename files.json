@@ -27,29 +27,29 @@
   ],
   "files": [
     {
-      "file": "PROFESSOR_TV_v2.6.2_universal.apk",
+      "file": "PROFESSOR_TV_v2.6.3_universal.apk",
       "title": "تحميل لكل الأجهزة",
       "group": "android",
       "size": 31406987,
       "primary": true
     },
     {
-      "file": "PROFESSOR_TV_v2.6.2_arm64.apk",
+      "file": "PROFESSOR_TV_v2.6.3_arm64.apk",
       "title": "نسخة أصغر للأجهزة 64 بت",
       "group": "android",
       "size": 16779341
     },
     {
-      "file": "PROFESSOR_TV_v2.6.2_armv7.apk",
+      "file": "PROFESSOR_TV_v2.6.3_armv7.apk",
       "title": "نسخة الأجهزة 32 بت",
       "group": "android",
-      "size": 16087139
+      "size": 16091235
     },
     {
-      "file": "PROFESSOR_TV_v2.4.2_Android4.apk",
+      "file": "PROFESSOR_TV_v2.4.3_Android4.apk",
       "title": "للأجهزة القديمة (أندرويد 4 و5)",
       "group": "android",
-      "size": 3204606
+      "size": 3208702
     },
     {
       "file": "PROFESSOR_TV_Setup_2.6.0.exe",
@@ -65,10 +65,10 @@
       "size": 43704944
     },
     {
-      "file": "PROFESSOR_TV_LG_webOS_2.4.2.ipk",
+      "file": "PROFESSOR_TV_LG_webOS_2.4.3.ipk",
       "title": "تحميل ملف IPK",
       "group": "lg",
-      "size": 412066,
+      "size": 412168,
       "primary": true
     }
   ]
